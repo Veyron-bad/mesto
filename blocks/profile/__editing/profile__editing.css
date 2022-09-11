@@ -1,8 +1,14 @@
-.profile__editing{
+.profile__editing {
     display: flex;
     flex-direction: row;
     align-items: baseline;
     max-width: 336px;
     margin-bottom: 16px;
     box-sizing: border-box;
+}
+
+@media screen and (width: 670px) {
+    .profile__editing {
+        margin-bottom: 14px;
+    }
 }

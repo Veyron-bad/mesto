@@ -6,3 +6,17 @@
     color: #fff;
     margin: 0;
 }
+
+@media screen and (max-width: 670px) {
+    .profile__profession {
+        align-self: center;
+        font-size: calc(0.011*100vw + 10.63px);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile__profession {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

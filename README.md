@@ -1,7 +1,7 @@
 # Проектная работа - Mesto  
   
   
-[Ссылка на проект](https://veyron-bad.github.io/mesto/index.html)
+[Ссылка на проект](https://veyron-bad.github.io/mesto/)
 
 ---------------------------------------------------------------
 

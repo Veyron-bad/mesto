@@ -1,4 +1,6 @@
 .element__image {
-    border: none;
-    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    object-position: center;
+    width: 282px;
+    height: 282px;
 }

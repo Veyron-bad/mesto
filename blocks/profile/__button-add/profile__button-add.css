@@ -8,6 +8,8 @@
     border-radius: 2px;
     background-color: transparent;
     transition: opacity 0.2s linear;
+    padding: 0;
+    margin-left: auto;
 }
 
 .profile__button-add:hover {
@@ -17,5 +19,6 @@
 @media screen and (max-width: 670px) {
     .profile__button-add {
         width: 100%;
+        background-size: 16px 16px;
     }
 }

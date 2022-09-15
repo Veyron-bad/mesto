@@ -3,11 +3,12 @@
     flex-direction: row;
     align-items: baseline;
     max-width: 336px;
+    width: 100%;
     margin-bottom: 16px;
     box-sizing: border-box;
 }
 
-@media screen and (width: 670px) {
+@media screen and (max-width: 670px) {
     .profile__editing {
         margin-bottom: 14px;
     }

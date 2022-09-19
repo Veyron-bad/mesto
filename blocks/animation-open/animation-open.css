@@ -6,3 +6,7 @@
         opacity: 1;
     }
 }
+
+.popup {
+    animation: openForm .5s linear;
+}

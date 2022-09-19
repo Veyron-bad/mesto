@@ -5,8 +5,8 @@ let buttonFormClose = popup.querySelector('.popup__button-close');
 let profileName = document.querySelector('.profile__name');
 let profileProfession = document.querySelector('.profile__profession');
 let popupForm = popup.querySelector('.popup__form');
-let inputFormName = popupForm.querySelector('.popup__input-name');
-let inputFormProfession = popupForm.querySelector('.popup__input-profession');
+let inputFormName = popupForm.querySelector('.popup__input_type_name');
+let inputFormProfession = popupForm.querySelector('.popup__input_type_profession');
 let buttonSaveForm = popupForm.querySelector('.popup__button-save');
 
 

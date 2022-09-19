@@ -1,10 +1,10 @@
-.popup__input-name {
+.popup__input_type_name {
     margin-bottom: 30px;
 }
 
 @media screen and (max-width: 550px) {
 
-    .popup__input-name {
+    .popup__input_type_name {
         margin: 0 0 30px;
     }
 }

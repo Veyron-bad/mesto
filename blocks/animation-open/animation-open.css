@@ -7,6 +7,6 @@
     }
 }
 
-.popup {
+.animation-open {
     animation: openForm .5s linear;
 }

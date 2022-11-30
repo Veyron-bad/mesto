@@ -8,7 +8,7 @@
       <title>Mesto</title>
     </head>
     <body class="main-page">
-        < class="page">
+        <main class="page">
             <header class="header">
                 <div class="header__logo"></div>
             </header>
@@ -25,7 +25,6 @@
                 <button class="profile__button-add" type="button"></button>
               </section>
               <section class="elements">
-                
               </section>
             </main>
             <div class="popup popup_type_editProfile">
@@ -44,8 +43,8 @@
                 <button class="popup__button-close" type="button"></button>
                 <h2 class="popup__title">Новое место</h2>
                   <form class="popup__form" name="addCards">
-                    <input type="text" class="popup__input popup__input_type_title" name="inputTitle" placeholder="Название" value="">
-                    <input type="text" class="popup__input popup__input_type_url" name="inputUrl" placeholder="Ссылка на картинку" value="">
+                    <input type="text" class="popup__input popup__input_type_title" name="inputTitle" placeholder="Название">
+                    <input type="text" class="popup__input popup__input_type_url" name="inputUrl" placeholder="Ссылка на картинку">
                     <button class="popup__button-save" name="saveButtonAddCard" type="submit">Создать</button>
                   </form>
               </div>
@@ -72,6 +71,7 @@
             </div>
           </article>
         </template>
+        <script src="./scripts/constants.js"></script>
         <script src="./scripts/index.js"></script>
     </body>
 </html>

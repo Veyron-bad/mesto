@@ -1,7 +1,7 @@
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
 const profileProfession = profile.querySelector('.profile__profession');
-const profileEditButton = profile.querySelector('.profile__button-edit');
+const buttonEditProfile = profile.querySelector('.profile__button-edit');
 
 const popupEditProfile = document.querySelector('.popup_type_editProfile');
 const popupFormEditProfile = document.forms['profileFormEditing'];
@@ -21,16 +21,16 @@ function openFormEditProfile() {
 }
 
 // Слушатель открытия формы редактирования
-profileEditButton.addEventListener('click', openFormEditProfile);
+buttonEditProfile.addEventListener('click', openFormEditProfile);
 
 // Функция закрытия Popup
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
 }
 
-const buttonClosePopup = document.querySelectorAll('.popup__button-close');
+const closeButtons = document.querySelectorAll('.popup__button-close');
 
-buttonClosePopup.forEach(function(button){
+closeButtons.forEach(function (button) {
     const popup = button.closest('.popup');
 
     button.addEventListener('click', () => closePopup(popup));
@@ -48,7 +48,7 @@ function submitEditProfileForm(evt) {
     profileName.textContent = inputProfileName.value;
     profileProfession.textContent = inputProfileProfession.value;
 
-closeFormEditProfile();
+    closeFormEditProfile();
 }
 
 //Слушатель сохранения формы редактирования профиля
@@ -59,7 +59,6 @@ const popupFormAddCard = document.forms['addCards'];
 const inputCardTitle = popupAddCard.querySelector('.popup__input_type_title');
 const inputCardUrl = popupAddCard.querySelector('.popup__input_type_url');
 const buttonAddCard = profile.querySelector('.profile__button-add');
-//const buttonCloseFormAddCard = popupAddCard.querySelector('.popup__button-close');
 
 // Функция открытия формы добавления карточки
 function openFormAddCard() {
@@ -99,11 +98,11 @@ function addCard(item, wrapElement) {
     wrapElement.prepend(element);
 }
 
-function renderCard () {
-    initialCards.forEach(function(item) {
+function renderCards() {
+    initialCards.forEach(function (item) {
 
-    addCard(item, cardsSection);
-});
+        addCard(item, cardsSection);
+    });
 }
 
 // Навешиваем слушатели
@@ -125,12 +124,12 @@ function deleteCard(evt) {
     currentDeleteButtonCard.remove();
 }
 
-  //Функция лайк карточки
+//Функция лайк карточки
 function toogleLike(evt) {
     evt.target.classList.toggle('element__like_active');
 }
 
-renderCard();
+renderCards();
 
 const popupTypeImageZoom = document.querySelector('.popup_type_zoom');//получаем popup открытия картинки
 
@@ -139,14 +138,11 @@ const imageZoom = popupTypeImageZoom.querySelector('.popup__image');
 const imageTitle = popupTypeImageZoom.querySelector('.popup__caption');
 
 function zoomImage(evt) {
-  const cardElement = evt.target.closest('.element');
-  const cardImage = cardElement.querySelector('.element__image');
-  const titleCard = cardElement.querySelector('.element__title');
-  imageZoom.src = cardImage.src;
-  imageTitle.textContent = titleCard.textContent;
-  imageZoom.alt = titleCard.textContent;
+    imageZoom.src = evt.target.src;
+    imageTitle.textContent = evt.target.alt;
+    imageZoom.alt = evt.target.alt;
 
-  openPopup(popupTypeImageZoom);
+    openPopup(popupTypeImageZoom);
 }
 
 //Закрытия картинки
@@ -168,7 +164,7 @@ function submitAddCardForm(evt) {
 
     addCard(elementCard, cardsSection);
 
-     evt.target.reset();
+    evt.target.reset();
 
     closePopup(popupAddCard);
 }

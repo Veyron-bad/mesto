@@ -8,9 +8,12 @@ const popupFormEditProfile = document.forms['profileFormEditing'];
 const inputProfileName = popupEditProfile.querySelector('.popup__input_type_name');
 const inputProfileProfession = popupEditProfile.querySelector('.popup__input_type_profession');
 
+const esc = 'Escape';
+
 // Функция открытия Popup
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keyup', handlerEscUp);
 }
 
 // Функция открытия формы редактирования
@@ -26,6 +29,7 @@ buttonEditProfile.addEventListener('click', openFormEditProfile);
 // Функция закрытия Popup
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keyup', handlerEscUp);
 }
 
 const closeButtons = document.querySelectorAll('.popup__button-close');
@@ -51,6 +55,27 @@ function submitEditProfileForm(evt) {
     closeFormEditProfile();
 }
 
+//Закрытия popup по нажатию ESC
+const handlerEscUp = (evt) => {
+    const activePopup = document.querySelector('.popup_opened');
+    if (evt.key === esc) {
+        closePopup(activePopup);
+    }
+}
+
+document.addEventListener('keyup', handlerEscUp);
+
+
+//Закрытие popup по нажатию за пределами формы
+const handlerMouseUp = (evt) => {
+    const activePopup = document.querySelector('.popup_opened');
+    if (evt.target === activePopup) {
+        closePopup(activePopup);
+    }
+}
+
+document.addEventListener('click', handlerMouseUp);
+
 //Слушатель сохранения формы редактирования профиля
 popupFormEditProfile.addEventListener('submit', submitEditProfileForm);
 
@@ -75,6 +100,12 @@ buttonAddCard.addEventListener('click', openFormAddCard);
 
 const cardsSection = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#template-card').content;
+
+// Закрытие popup по нажатию вне popup
+
+window.addEventListener('click', (evt) => {
+    console.log(evt.target);
+})
 
 // Функция создания карточки
 

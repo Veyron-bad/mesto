@@ -50,6 +50,7 @@ const enableValidation = ({ formSelector, ...rest }) => {
         });
         setEventListeners(formElement, rest);
     });
+
 };
 
 //Функция проверки имеется ли невалидное поле
@@ -63,10 +64,19 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement, inactiveButtonClass) => {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add(inactiveButtonClass);
+        buttonElement.setAttribute('disabled', true);
     } else {
         buttonElement.classList.remove(inactiveButtonClass);
+        buttonElement.removeAttribute('disabled');
     }
 };
+
+const disabledButton = (formElement) => {
+    const buttonElement = formElement.querySelector('.popup__button-save');
+    buttonElement.setAttribute('disabled', true);
+    buttonElement.classList.add('popup__button-save_disabled');
+}
+
 
 enableValidation({
     formSelector: '.popup__form',

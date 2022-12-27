@@ -23,6 +23,7 @@ validationAddCardForm.enableValidation();
 
 // Функция открытия формы редактирования
 function openFormEditProfile() {
+    profileEditingFormValidation._resetErrorMessage();
     openPopup(popupEditProfile);
     inputProfileName.value = profileName.textContent;
     inputProfileProfession.value = profileProfession.textContent;
@@ -72,7 +73,8 @@ const buttonAddCard = profile.querySelector('.profile__button-add');
 
 // Функция открытия формы добавления карточки
 function openFormAddCard() {
-    validationAddCardForm.disabledButton();
+    validationAddCardForm._disabledButton();
+    validationAddCardForm._resetErrorMessage();
     openPopup(popupAddCard);
 };
 

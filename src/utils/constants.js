@@ -36,6 +36,14 @@ export const configValidation = {
   errorClass: 'popup__input-error_active'
 };
 
-export const popupTypeImageZoom = document.querySelector('.popup_type_zoom');
-export const imageZoom = popupTypeImageZoom.querySelector('.popup__image');
-export const imageTitle = popupTypeImageZoom.querySelector('.popup__caption');
+export const profile = document.querySelector('.profile');
+export const profileNameSelector = '.profile__name';
+export const profileProfessionSelector = '.profile__profession';
+export const popupEditProfileSelector = '.popup_type_editProfile';
+export const buttonEditProfile = profile.querySelector('.profile__button-edit');
+export const popupEditProfile = document.querySelector('.popup_type_editProfile');
+export const inputProfileName = popupEditProfile.querySelector('.popup__input_type_name');
+export const inputProfileProfession = popupEditProfile.querySelector('.popup__input_type_profession');
+export const popupFormEditProfile = document.forms['profileFormEditing'];
+export const popupFormAddCard = document.forms['addCards'];
+

@@ -1,11 +1,9 @@
-import { openPopup } from './untils.js';
-import { popupTypeImageZoom, imageZoom, imageTitle } from './constants.js'
-
-export class Card {
-    constructor(data, cardTemplateSelector) {
+export default class Card {
+    constructor(data, cardTemplateSelector, handleCardClick) {
         this._link = data.link;
         this._name = data.name;
         this._imageAlt = data.name;
+        this._handleCardClick = handleCardClick;
 
         this._cardTemplateSelector = document.querySelector(cardTemplateSelector).content.querySelector('.element');
     }
@@ -33,7 +31,9 @@ export class Card {
 
         this._buttonLike.addEventListener('click', this._toogleLike);
 
-        this._image.addEventListener('click', this._zoomImage);
+        this._image.addEventListener('click', () => {
+            this._handleCardClick()
+        });
     }
 
     _deleteCard = () => {
@@ -45,11 +45,4 @@ export class Card {
         this._buttonLike.classList.toggle('element__like_active');
     }
 
-    _zoomImage = () => {
-        imageZoom.src = this._image.src;
-        imageTitle.textContent = this._image.alt;
-        imageZoom.alt = this._image.alt;
-
-        openPopup(popupTypeImageZoom);
-    }
 }

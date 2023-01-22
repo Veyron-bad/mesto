@@ -51,24 +51,29 @@ const buttonAddCard = profile.querySelector('.profile__button-add');
 const validationAddCardForm = new FormValidator(configValidation, popupFormAddCard);
 validationAddCardForm.enableValidation();
 
+const createCard = (item) => {
+    const card = new Card({ data: item }, '#template-card', () => {
+        popupWithImage.open(item);
+    });
+
+    const cardElement = card.generatCard();
+
+    return cardElement;
+}
+
+const cardContainerSelector = '.elements';
+
+const cardSection = new Section({ items: initialCards, renderer: createCard }, cardContainerSelector);
+cardSection.renderItems();
+
 const formAddCard = new PopupWithForm({
     popupSelector: popupAddCardSelector, submitForm: (dataForm) => {
-        const formInputValue = [{
+        const formInputValue = {
             name: dataForm.inputTitle,
             link: dataForm.inputUrl
-        }];
+        };
 
-        const userCard = new Section({
-            items: formInputValue, renderer: (item) => {
-                const card = new Card(item, '#template-card', () => {
-                    popupWithImage.open(item);
-                });
-                const elementCard = card.createCard();
-                userCard.setItem(elementCard);
-            }
-        }, cardContainerSelector);
-
-        userCard.renderItems();
+        cardSection.setItem(createCard(formInputValue));
 
         formAddCard.close();
     }
@@ -79,25 +84,10 @@ formAddCard.setEventListeners();
 // Открытия формы добавления карточки
 buttonAddCard.addEventListener('click', () => {
     formAddCard.open();
+    validationAddCardForm.enableValidation();
 });
 
 //Открытие картинки
 const popupWithImage = new PopupWithImage('.popup_type_zoom');
 
 popupWithImage.setEventListeners();
-
-const cardContainerSelector = '.elements';
-
-// Инициализация карточка
-const defaultCardList = new Section({
-    items: initialCards, renderer: (item) => {
-        const card = new Card(item, '#template-card', () => {
-            popupWithImage.open(item);
-        });
-        const elementCard = card.createCard();
-        defaultCardList.setItem(elementCard);
-    }
-}, cardContainerSelector);
-
-defaultCardList.renderItems();
-

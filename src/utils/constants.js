@@ -25,8 +25,6 @@ export const initialCards = [
   }
 ];
 
-export const esc = 'Escape';
-
 export const configValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',

@@ -7,6 +7,10 @@
     height: 120px;
 }
 
+.profile__avatar:hover:before .profile__avatar {
+    background-image: url(../../../images/Avatar_change.jpg);
+}
+
 @media screen and (max-width: 670px) {
     .profile__avatar {
         margin-bottom: 26px;

@@ -187,12 +187,12 @@ const formEditAvatar = new PopupWithForm({
 formEditAvatar.setEventListeners();
 
 buttonChangeAvatar.addEventListener('click', () => {
-    console.log('press');
     formEditAvatar.open();
 
     const userItem = userInfo.getUserInfo();
 
     inputAvatarUrl.value = userItem.avatar;
+    editProfileAvatarFormValidation.enableValidation();
 });
 
 // Добавление карточек

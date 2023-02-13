@@ -14,14 +14,10 @@ export const popupEditProfileSelector = '.popup_type_editProfile';
 export const popupEditAvatar = '.popup_type_change-avatar';
 export const buttonEditProfile = profile.querySelector('.profile__button-edit');
 export const popupEditProfile = document.querySelector('.popup_type_editProfile');
-export const inputProfileName = popupEditProfile.querySelector('.popup__input_type_name');
-export const inputProfileProfession = popupEditProfile.querySelector('.popup__input_type_profession');
-export const inputAvatarUrl = document.querySelector('.popup__input_type_url');
 export const popupFormEditProfile = document.forms['profileFormEditing'];
 export const popupFormAddCard = document.forms['addCards'];
 export const popupFormEditAvatar = document.forms['changeAvatar'];
 export const popupConfirmDelete = '.popup_type_del-confirm';
 export const buttonChangeAvatar = profile.querySelector('.profile__avatar-overlay');
 export const userAvatarSelector = '.profile__avatar';
-export const profileAvatar = document.querySelector('.profile__avatar');
 

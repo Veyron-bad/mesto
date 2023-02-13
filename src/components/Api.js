@@ -86,6 +86,10 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify(userData)
         })
+
+            .then((res) => {
+                return this._isOk(res);
+            })
     }
 
     editProfileAvatar(userData) {
@@ -94,5 +98,11 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify(userData)
         })
+
+            .then((res) => {
+                return this._isOk(res);
+            })
     }
+
+
 }

@@ -5,6 +5,7 @@ export default class PopupWithConfirmation extends Popup {
         super(popupSelector)
         this._form = this._popup.querySelector('.popup__form');
         this._submitForm = submit;
+        this._submitButton = this._popup.querySelector('.popup__button-save');
     }
 
     setHandlerSubmit(submit) {
@@ -19,5 +20,9 @@ export default class PopupWithConfirmation extends Popup {
 
             this._submitForm();
         });
+    }
+
+    setButtonText(text) {
+        this._submitButton.textContent = text;
     }
 }

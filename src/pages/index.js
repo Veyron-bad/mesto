@@ -9,14 +9,10 @@ import {
     profileProfessionSelector,
     buttonEditProfile,
     profile,
-    inputProfileName,
-    inputProfileProfession,
     popupConfirmDelete,
     buttonChangeAvatar,
     popupEditAvatar,
     userAvatarSelector,
-    inputAvatarUrl,
-    profileAvatar,
     popupFormEditAvatar
 } from '../utils/constants.js';
 import Card from '../components/Card.js';
@@ -40,7 +36,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
         userId = userData._id;
         userInfo.setUserInfo(userData);
         cardSection.renderItems(cardData);
-        profileAvatar.src = userData.avatar;
+
     })
 
     .catch((err) => {
@@ -90,7 +86,7 @@ const createCard = (item) => {
                     })
 
                     .finally(() => {
-                        popupWithConfirmation.setButtonText('Удаленo');
+                        popupWithConfirmation.setButtonText('Да');
                     })
             })
             popupWithConfirmation.open();
@@ -129,14 +125,14 @@ const createCard = (item) => {
 
 const cardSection = new Section({ renderer: createCard }, cardContainerSelector);
 
-// //Открытие формы редактирования
+// //Открытие формы редактирования профиля
 const formEditProfile = new PopupWithForm({
     popupSelector: popupEditProfileSelector, submitForm: (dataForm) => {
-        setTimeout(formEditProfile.setButtonText('Сохранение...'), 1500);
+        formEditProfile.setButtonText('Сохранение...');
 
         api.editProfileInfo(dataForm)
-            .then(() => {
-                userInfo.setUserInfo(dataForm);
+            .then((res) => {
+                userInfo.setUserInfo(res);
                 formEditProfile.close();
             })
 
@@ -154,23 +150,22 @@ formEditProfile.setEventListeners();
 
 buttonEditProfile.addEventListener('click', () => {
     formEditProfile.open();
+    profileEditingFormValidation.resetValidation();
 
     const userItem = userInfo.getUserInfo();
 
-    inputProfileName.value = userItem.name;
-    inputProfileProfession.value = userItem.about;
+    formEditProfile.setInputValues(userItem);
 });
 
 // Открытие формы редактирования аватарки
 const formEditAvatar = new PopupWithForm({
     popupSelector: popupEditAvatar,
     submitForm: (dataForm) => {
-        setTimeout(formEditAvatar.setButtonText('Загрузка...'), 1000);
+        formEditAvatar.setButtonText('Загрузка...');
 
         api.editProfileAvatar(dataForm)
-            .then(() => {
-                // formEditAvatar.setButtonText('Загрузка...');
-                userInfo.setUserAvatar(dataForm);
+            .then((res) => {
+                userInfo.setUserInfo(res);
                 formEditAvatar.close();
             })
 
@@ -188,11 +183,7 @@ formEditAvatar.setEventListeners();
 
 buttonChangeAvatar.addEventListener('click', () => {
     formEditAvatar.open();
-
-    const userItem = userInfo.getUserInfo();
-
-    inputAvatarUrl.value = userItem.avatar;
-    editProfileAvatarFormValidation.enableValidation();
+    editProfileAvatarFormValidation.resetValidation();
 });
 
 // Добавление карточек
@@ -201,11 +192,12 @@ const buttonAddCard = profile.querySelector('.profile__button-add');
 
 const formAddCard = new PopupWithForm({
     popupSelector: popupAddCardSelector, submitForm: (dataForm) => {
-        setTimeout(formAddCard.setButtonText('Загрузка...'), 1500);
+        formAddCard.setButtonText('Загрузка...');
 
         api.addCard(dataForm)
             .then((res) => {
                 cardSection.setItem(createCard(res));
+                formAddCard.close();
             })
 
             .catch((err) => {
@@ -213,10 +205,8 @@ const formAddCard = new PopupWithForm({
             })
 
             .finally(() => {
-                formAddCard.setButtonText('Загрузка');
+                formAddCard.setButtonText('Создать');
             })
-
-        formAddCard.close();
     }
 });
 
@@ -225,5 +215,5 @@ formAddCard.setEventListeners();
 // Открытия формы добавления карточки
 buttonAddCard.addEventListener('click', () => {
     formAddCard.open();
-    validationAddCardForm.enableValidation();
+    validationAddCardForm.resetValidation();
 });

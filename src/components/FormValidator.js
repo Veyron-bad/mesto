@@ -65,9 +65,10 @@ export class FormValidator {
         this._buttonElement.classList.add(this._config.inactiveButtonClass);
     }
 
-    _resetErrorMessage() {
+    resetValidation() {
+        this._toggleButtonState();
         this._inputList.forEach((inputElement) => {
-            this._hideInputError(inputElement)
+            this._hideInputError(inputElement);
         });
     }
 }
